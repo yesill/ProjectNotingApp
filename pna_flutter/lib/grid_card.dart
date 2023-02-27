@@ -37,7 +37,7 @@ class GridCard extends StatelessWidget {
       Navigator.push(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, anim1, anim2) => const ProjectDetailPage(),
+          pageBuilder: (context, anim1, anim2) => ProjectDetailPage(),
           transitionDuration: Duration.zero,
           reverseTransitionDuration: Duration.zero,
         )
@@ -46,7 +46,7 @@ class GridCard extends StatelessWidget {
     else {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const ProjectDetailPage()),
+        MaterialPageRoute(builder: (context) => ProjectDetailPage()),
       );
     }
   }
