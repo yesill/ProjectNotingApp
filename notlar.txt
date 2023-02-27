@@ -1,0 +1,7 @@
+gridView size ını düzgün ayarlamak için bir yöntem bul.
+gridView içeriğindeki öğelerin uzunluğu kadar olsun 
+
+
+
+
+
