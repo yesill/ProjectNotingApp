@@ -1,10 +1,6 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Header.dart';
-import 'MainView.dart';
-import 'Sizes.dart';
+import 'package:pna_flutter/main_view.dart';
+import 'package:pna_flutter/sizes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int projectNumber = 0;
 
-  void addProject(){
+  void addNewProject(){
     setState(() {
       projectNumber++;
       debugPrint("project number: $projectNumber");
@@ -61,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: addProject,
+        onPressed: addNewProject,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Sizes.dart';
+import 'package:pna_flutter/sizes.dart';
 
 class Header extends StatelessWidget {
   const Header({

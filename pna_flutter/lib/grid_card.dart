@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pna_flutter/project_detail_page.dart';
 import 'Sizes.dart';
 
 class GridCard extends StatelessWidget {
@@ -14,22 +15,40 @@ class GridCard extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.all(getSize(sizeOfGridElementPadding, context).width),
-      child: Container(
-        color: Colors.blue,
-        padding: EdgeInsets.all(getSize(sizeOfGridElementPadding, context).width),
+      child: GestureDetector(
+        onTap: () {moveToDetailsPage(context, noAnimations: true);},
         child: Container(
-          // guide
-          color: Colors.amber,
+          color: Colors.blue,
+          padding: EdgeInsets.all(getSize(sizeOfGridElementPadding, context).width),
           child: Column(
             children: [
               createExpanded(1, colorTitle, "Project Title"),
               createExpanded(3, colorContent, "Content"),
               createExpanded(1, colorDetails, "Details (files etc.)"),
             ],
-          )
+          ),
         ),
       ),
     );
+  }
+
+  void moveToDetailsPage(BuildContext context, {bool noAnimations = true}){
+    if (noAnimations){
+      Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, anim1, anim2) => const ProjectDetailPage(),
+          transitionDuration: Duration.zero,
+          reverseTransitionDuration: Duration.zero,
+        )
+      );
+    }
+    else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ProjectDetailPage()),
+      );
+    }
   }
 
   Expanded createExpanded(int flex, Color color, String text) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pna_flutter/Header.dart';
-import 'package:pna_flutter/Sizes.dart';
-import 'GridCard.dart';
+import 'package:pna_flutter/header.dart';
+import 'package:pna_flutter/sizes.dart';
+import 'package:pna_flutter/grid_card.dart';
 
 class MainView extends StatelessWidget {
   final int projectNumber;
@@ -39,14 +39,7 @@ class MainView extends StatelessWidget {
       child: Column(
           children: [
             const Header(),
-            Container(
-              //height: getSize(sizeOfGridView, context).height,
-              // guide
-              // decoration: BoxDecoration(
-              //   border: Border.all(color: const Color.fromARGB(255, 0, 255, 0))
-              // ),
-              child: addGridCard(),
-            ),
+            addGridCard()
           ],
         ),
     );
