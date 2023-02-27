@@ -10,12 +10,39 @@ class ProjectDetailPage extends StatefulWidget {
 }
 
 class _ProjectDetailPageState extends State<ProjectDetailPage> {
-  int leftBarFlex = 1;
+  bool leftBarOn = true;
+  int leftBarFlex = 20, closeLeftBarButtonFlex = 1, rightBarFlex = 80;
 
-  void changeLeftBarFlex(){
+  BoxDecoration closeLeftBarDecoration = const BoxDecoration(
+    color: Colors.black,
+  );
+
+  void hoverCloseLeftBarButton(bool isHover){
     setState(() {
-      if(leftBarFlex == 1){ leftBarFlex = 0;  }
-      else if(leftBarFlex == 0){  leftBarFlex = 1;  }
+      if(isHover){
+        closeLeftBarDecoration = BoxDecoration(
+          color: Colors.black,
+          border: Border.all(color: Colors.white, width: 3),
+        );
+      }
+      else{
+        closeLeftBarDecoration = const BoxDecoration(
+          color: Colors.black,
+        );
+      }
+    });
+  }
+
+  void toggleLeftBar(){
+    setState(() {
+      if(leftBarOn){
+        leftBarFlex -= 20;  rightBarFlex += 20;
+        leftBarOn = false;
+      }
+      else{
+        leftBarFlex += 20;  rightBarFlex -= 20;
+        leftBarOn = true;
+      }
     });
   }
 
@@ -31,28 +58,44 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
           children: [
             Expanded(
               flex: leftBarFlex,
-              child: GestureDetector(
-                onTap: (){changeLeftBarFlex();},
-                child: Container(
-                  color: Colors.green
-                )
+              child: Container(color: Colors.green, alignment: Alignment.center,
+              child: const Text("Files etc.", textAlign: TextAlign.center, style: TextStyle(fontSize: 36)),
               )
             ),
             Expanded(
-              flex: 5-leftBarFlex,
-              child: Container(
-                color: Colors.amber
-              )
+              flex: closeLeftBarButtonFlex,
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                onEnter: (event) => {hoverCloseLeftBarButton(true)},
+                onExit: (event) => {hoverCloseLeftBarButton(false)},
+                child: GestureDetector(
+                  onTap: (){toggleLeftBar();},
+                  child: Container(
+                    width: double.maxFinite,
+                    height: double.maxFinite,
+                    decoration: closeLeftBarDecoration,
+                  ),
+                ),
+              ),
             ),
+            Expanded(flex: rightBarFlex, child: Container(color: Colors.amber, alignment: Alignment.center,
+              child: const Text("Content", textAlign: TextAlign.center, style: TextStyle(fontSize: 36)),
+            )),
           ],
         )
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: changeLeftBarFlex,
-        shape: const BeveledRectangleBorder(),
-        child: const Icon(Icons.menu),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      // drawer: NavigationDrawer(
+      //   children: [
+      //     Container(color: Colors.amber,)
+      //   ],
+      // ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: changeLeftBarFlex,
+      //   tooltip: "menu",
+      //   shape: const BeveledRectangleBorder(),
+      //   child: const Icon(Icons.menu),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
     );
   }
 }

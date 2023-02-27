@@ -1,5 +1,5 @@
-gridView size ını düzgün ayarlamak için bir yöntem bul.
-gridView içeriğindeki öğelerin uzunluğu kadar olsun 
+project detail page içerisindeki lef bar ve right bar i başka dosyaya ayır,
+	leftbar butonunu local fonksiyon haline getir.
 
 
 

@@ -35,7 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void addNewProject(){
     setState(() {
       projectNumber++;
-      debugPrint("project number: $projectNumber");
     });
   }
 
